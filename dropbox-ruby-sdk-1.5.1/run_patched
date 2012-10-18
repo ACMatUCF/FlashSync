@@ -1,0 +1,71 @@
+#! /usr/bin/env ruby
+
+require 'rubygems'
+require 'json'
+require 'pathname'
+require 'net/https'
+require './lib/dropbox_sdk'
+
+def main
+    if ARGV.length < 2
+        $stderr.puts "Usage: ./run_patched <app-config.json> <program.rb> [args...]"
+        exit 1
+    end
+
+    config_file = ARGV.shift
+    program_file = ARGV.shift
+
+    unless program_file =~ /\.rb$/
+        $stderr.puts "Program file name must end with \".rb\".  You specified \"#{program_file}\"."
+        exit 1
+    end
+
+    # See if the config file exists, then load it as JSON.
+    unless File.exist?(config_file)
+        $stderr.puts "Couldn't find apps.json config file (\"#{config_file}\")"
+        exit 1
+    end
+    config = JSON.parse(IO.read(config_file))
+
+    # Load the key/secret/access_type/server fields.
+    ['key', 'secret', 'access_type'].each do |field|
+        if config[field] == nil || config[field].length == 0
+            $stderr.puts "\"#{apps_json_path}\": config \"#{config_name}\": missing or empty \"#{field}\" field."
+        end
+    end
+    app_key = config['key']
+    app_secret = config['secret']
+    app_access_type = config['access_type']
+    server = config['server']
+
+    unless app_access_type == 'dropbox' or app_access_type == 'app_folder'
+        $stderr.puts "\"#{apps_json_path}\": config \"#{config_name}\": access_type should be 'dropbox' or 'app_folder'.  You specified \"#{app_access_type}\"."
+        exit 1
+    end
+
+    # Patch hostnames in dropbox_sdk
+    if server != nil and server != 'dropbox.com'
+        Dropbox::API_SERVER.replace "api.#{server}"
+        Dropbox::API_CONTENT_SERVER.replace "api-content.#{server}"
+        Dropbox::WEB_SERVER.replace "meta.#{server}"
+
+        # Disable cert checking on non-"dropbox.com" domains, since those are dev
+        # machines without properly-signed certs.
+        DropboxSession.class_eval do
+            def enable_cert_checking(http)
+                http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+            end
+        end
+    end
+
+    # Read in the program, search/replace the app key/secret, eval the resulting string.
+    code = IO.read(program_file)
+    code = code.gsub(/^APP_KEY = ''$/, "APP_KEY = '#{app_key}'")
+    code = code.gsub(/^APP_SECRET = ''$/, "APP_SECRET = '#{app_secret}'")
+    code = code.gsub(/^ACCESS_TYPE = :app_folder .*$/, "ACCESS_TYPE = :#{app_access_type}")
+    eval(code)
+end
+
+if __FILE__ == $0
+    main()
+end

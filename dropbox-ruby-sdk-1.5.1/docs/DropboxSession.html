@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>class DropboxSession - RDoc Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>build/dropbox-ruby-sdk-1.5.1/lib/dropbox_sdk.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">Object
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-deserialize">::deserialize</a>
+    
+    <li><a href="#method-c-new">::new</a>
+    
+    <li><a href="#method-i-access_token">#access_token</a>
+    
+    <li><a href="#method-i-assert_authorized">#assert_authorized</a>
+    
+    <li><a href="#method-i-authorized-3F">#authorized?</a>
+    
+    <li><a href="#method-i-clear_access_token">#clear_access_token</a>
+    
+    <li><a href="#method-i-do_http_with_body">#do_http_with_body</a>
+    
+    <li><a href="#method-i-get_access_token">#get_access_token</a>
+    
+    <li><a href="#method-i-get_authorize_url">#get_authorize_url</a>
+    
+    <li><a href="#method-i-get_request_token">#get_request_token</a>
+    
+    <li><a href="#method-i-request_token">#request_token</a>
+    
+    <li><a href="#method-i-serialize">#serialize</a>
+    
+    <li><a href="#method-i-set_access_token">#set_access_token</a>
+    
+    <li><a href="#method-i-set_request_token">#set_request_token</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./DropboxClient.html">DropboxClient</a>
+  
+    <li><a href="./DropboxClient/ChunkedUploader.html">DropboxClient::ChunkedUploader</a>
+  
+    <li><a href="./DropboxAuthError.html">DropboxAuthError</a>
+  
+    <li><a href="./DropboxError.html">DropboxError</a>
+  
+    <li><a href="./DropboxNotModified.html">DropboxNotModified</a>
+  
+    <li><a href="./DropboxSession.html">DropboxSession</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class DropboxSession</h1>
+
+  <div id="description" class="description">
+    
+<p><a href="DropboxSession.html">DropboxSession</a> is responsible for holding
+OAuth information.  It knows how to take your consumer key and secret and
+request an access token, an authorize url, and get an access token.  You
+just need to pass it to <a href="DropboxClient.html">DropboxClient</a>
+after its been authorized.</p>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-deserialize" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">deserialize</span><span
+            class="method-args">(ser)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Takes a serialized <a href="DropboxSession.html">DropboxSession</a> YAML
+String and returns a new <a href="DropboxSession.html">DropboxSession</a>
+object</p>
+          
+
+          
+          <div class="method-source-code" id="deserialize-source">
+            <pre><span class="ruby-comment"># File build/dropbox-ruby-sdk-1.5.1/lib/dropbox_sdk.rb, line 234</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">deserialize</span>(<span class="ruby-identifier">ser</span>)
+    <span class="ruby-identifier">ser</span> = <span class="ruby-constant">YAML</span><span class="ruby-operator">::</span><span class="ruby-identifier">load</span>(<span class="ruby-identifier">ser</span>)
+    <span class="ruby-identifier">session</span> = <span class="ruby-constant">DropboxSession</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">ser</span>.<span class="ruby-identifier">pop</span>, <span class="ruby-identifier">ser</span>.<span class="ruby-identifier">pop</span>)
+    <span class="ruby-identifier">session</span>.<span class="ruby-identifier">set_request_token</span>(<span class="ruby-identifier">ser</span>.<span class="ruby-identifier">pop</span>, <span class="ruby-identifier">ser</span>.<span class="ruby-identifier">pop</span>)
+
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">ser</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+        <span class="ruby-identifier">session</span>.<span class="ruby-identifier">set_access_token</span>(<span class="ruby-identifier">ser</span>.<span class="ruby-identifier">pop</span>, <span class="ruby-identifier">ser</span>.<span class="ruby-identifier">pop</span>)
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">session</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- deserialize-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- deserialize-method -->
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(consumer_key, consumer_secret)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <ul><li>
+<p>consumer_key - Your Dropbox application’s “app key”.</p>
+</li><li>
+<p>consumer_secret - Your Dropbox application’s “app secret”.</p>
+</li></ul>
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File build/dropbox-ruby-sdk-1.5.1/lib/dropbox_sdk.rb, line 26</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">consumer_key</span>, <span class="ruby-identifier">consumer_secret</span>)
+    <span class="ruby-ivar">@consumer_key</span> = <span class="ruby-identifier">consumer_key</span>
+    <span class="ruby-ivar">@consumer_secret</span> = <span class="ruby-identifier">consumer_secret</span>
+    <span class="ruby-ivar">@request_token</span> = <span class="ruby-keyword">nil</span>
+    <span class="ruby-ivar">@access_token</span> = <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- new-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- new-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-access_token" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">access_token</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the access token, or nil if one hasn’t been acquired yet.</p>
+          
+
+          
+          <div class="method-source-code" id="access_token-source">
+            <pre><span class="ruby-comment"># File build/dropbox-ruby-sdk-1.5.1/lib/dropbox_sdk.rb, line 171</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">access_token</span>
+    <span class="ruby-ivar">@access_token</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- access_token-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- access_token-method -->
+
+    
+      <div id="method-i-assert_authorized" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">assert_authorized</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>If we have an access token, then do nothing.  If not, throw a RuntimeError.</p>
+          
+
+          
+          <div class="method-source-code" id="assert_authorized-source">
+            <pre><span class="ruby-comment"># File build/dropbox-ruby-sdk-1.5.1/lib/dropbox_sdk.rb, line 203</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">assert_authorized</span>
+    <span class="ruby-keyword">unless</span> <span class="ruby-identifier">authorized?</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">RuntimeError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">'Session does not yet have a request token'</span>)
+    <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- assert_authorized-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- assert_authorized-method -->
+
+    
+      <div id="method-i-authorized-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">authorized?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns true if this Session has been authorized and has an access_token.</p>
+          
+
+          
+          <div class="method-source-code" id="authorized-3F-source">
+            <pre><span class="ruby-comment"># File build/dropbox-ruby-sdk-1.5.1/lib/dropbox_sdk.rb, line 210</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">authorized?</span>
+    <span class="ruby-operator">!</span><span class="ruby-operator">!</span><span class="ruby-ivar">@access_token</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- authorized-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- authorized-3F-method -->
+
+    
+      <div id="method-i-clear_access_token" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">clear_access_token</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Clears the <a
+href="DropboxSession.html#method-i-access_token">#access_token</a></p>
+          
+
+          
+          <div class="method-source-code" id="clear_access_token-source">
+            <pre><span class="ruby-comment"># File build/dropbox-ruby-sdk-1.5.1/lib/dropbox_sdk.rb, line 161</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">clear_access_token</span>
+    <span class="ruby-ivar">@access_token</span> = <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- clear_access_token-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- clear_access_token-method -->
+
+    
+      <div id="method-i-do_http_with_body" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">do_http_with_body</span><span
+            class="method-args">(uri, request, body)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="do_http_with_body-source">
+            <pre><span class="ruby-comment"># File build/dropbox-ruby-sdk-1.5.1/lib/dropbox_sdk.rb, line 85</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">do_http_with_body</span>(<span class="ruby-identifier">uri</span>, <span class="ruby-identifier">request</span>, <span class="ruby-identifier">body</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">body</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">body</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>)
+            <span class="ruby-identifier">form_data</span> = {}
+            <span class="ruby-identifier">body</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">form_data</span>[<span class="ruby-identifier">k</span>.<span class="ruby-identifier">to_s</span>] = <span class="ruby-identifier">v</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">v</span>.<span class="ruby-identifier">nil?</span>}
+            <span class="ruby-identifier">request</span>.<span class="ruby-identifier">set_form_data</span>(<span class="ruby-identifier">form_data</span>)
+        <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">body</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:read</span>)
+            <span class="ruby-keyword">if</span> <span class="ruby-identifier">body</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:length</span>)
+                <span class="ruby-identifier">request</span>[<span class="ruby-string">&quot;Content-Length&quot;</span>] = <span class="ruby-identifier">body</span>.<span class="ruby-identifier">length</span>.<span class="ruby-identifier">to_s</span>
+            <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">body</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:stat</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">body</span>.<span class="ruby-identifier">stat</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:size</span>)
+                <span class="ruby-identifier">request</span>[<span class="ruby-string">&quot;Content-Length&quot;</span>] = <span class="ruby-identifier">body</span>.<span class="ruby-identifier">stat</span>.<span class="ruby-identifier">size</span>.<span class="ruby-identifier">to_s</span>
+            <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&quot;Don't know how to handle 'body' (responds to 'read' but not to 'length' or 'stat.size').&quot;</span>
+            <span class="ruby-keyword">end</span>
+            <span class="ruby-identifier">request</span>.<span class="ruby-identifier">body_stream</span> = <span class="ruby-identifier">body</span>
+        <span class="ruby-keyword">else</span>
+            <span class="ruby-identifier">s</span> = <span class="ruby-identifier">body</span>.<span class="ruby-identifier">to_s</span>
+            <span class="ruby-identifier">request</span>[<span class="ruby-string">&quot;Content-Length&quot;</span>] = <span class="ruby-identifier">s</span>.<span class="ruby-identifier">length</span>
+            <span class="ruby-identifier">request</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">s</span>
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">do_http</span>(<span class="ruby-identifier">uri</span>, <span class="ruby-ivar">@access_token</span>, <span class="ruby-identifier">request</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- do_http_with_body-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- do_http_with_body-method -->
+
+    
+      <div id="method-i-get_access_token" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_access_token</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the access token. If this <a
+href="DropboxSession.html">DropboxSession</a> doesn’t yet have an <a
+href="DropboxSession.html#method-i-access_token">#access_token</a>, it
+requests one using the <a
+href="DropboxSession.html#method-i-request_token">#request_token</a>
+generate from your app’s token and secret.  This request will fail unless
+your user has gone to the authorize_url and approved your request</p>
+          
+
+          
+          <div class="method-source-code" id="get_access_token-source">
+            <pre><span class="ruby-comment"># File build/dropbox-ruby-sdk-1.5.1/lib/dropbox_sdk.rb, line 192</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_access_token</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-ivar">@access_token</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">authorized?</span>
+
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@request_token</span>.<span class="ruby-identifier">nil?</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">DropboxAuthError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;No request token. You must set this or get an authorize url first.&quot;</span>)
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-ivar">@access_token</span> = <span class="ruby-identifier">get_token</span>(<span class="ruby-string">&quot;/access_token&quot;</span>, <span class="ruby-ivar">@request_token</span>,  <span class="ruby-string">&quot;Couldn't get access token.&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_access_token-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_access_token-method -->
+
+    
+      <div id="method-i-get_authorize_url" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_authorize_url</span><span
+            class="method-args">(callback=nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>This returns a URL that your user must visit to grant permissions to this
+application.</p>
+          
+
+          
+          <div class="method-source-code" id="get_authorize_url-source">
+            <pre><span class="ruby-comment"># File build/dropbox-ruby-sdk-1.5.1/lib/dropbox_sdk.rb, line 146</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_authorize_url</span>(<span class="ruby-identifier">callback</span>=<span class="ruby-keyword">nil</span>)
+    <span class="ruby-identifier">get_request_token</span>()
+
+    <span class="ruby-identifier">url</span> = <span class="ruby-node">&quot;/#{Dropbox::API_VERSION}/oauth/authorize?oauth_token=#{URI.escape(@request_token.key)}&quot;</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">callback</span>
+        <span class="ruby-identifier">url</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;&amp;oauth_callback=#{URI.escape(callback)}&quot;</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@locale</span>
+        <span class="ruby-identifier">url</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;&amp;locale=#{URI.escape(@locale)}&quot;</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-node">&quot;https://#{Dropbox::WEB_SERVER}#{url}&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_authorize_url-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_authorize_url-method -->
+
+    
+      <div id="method-i-get_request_token" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_request_token</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>This returns a request token.  Requests one from the dropbox server using
+the provided application key and secret if nessecary.</p>
+          
+
+          
+          <div class="method-source-code" id="get_request_token-source">
+            <pre><span class="ruby-comment"># File build/dropbox-ruby-sdk-1.5.1/lib/dropbox_sdk.rb, line 140</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_request_token</span>()
+    <span class="ruby-ivar">@request_token</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">get_token</span>(<span class="ruby-string">&quot;/request_token&quot;</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-string">&quot;Error getting request token.  Is your app key and secret correctly set?&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_request_token-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_request_token-method -->
+
+    
+      <div id="method-i-request_token" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">request_token</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the request token, or nil if one hasn’t been acquired yet.</p>
+          
+
+          
+          <div class="method-source-code" id="request_token-source">
+            <pre><span class="ruby-comment"># File build/dropbox-ruby-sdk-1.5.1/lib/dropbox_sdk.rb, line 166</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">request_token</span>
+    <span class="ruby-ivar">@request_token</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- request_token-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- request_token-method -->
+
+    
+      <div id="method-i-serialize" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">serialize</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>serialize the <a href="DropboxSession.html">DropboxSession</a>. At
+DropboxSession’s state is capture in three key/secret pairs.  Consumer,
+request, and access. Serialize returns these in a YAML string, generated
+from a converted array of the form:</p>
+<dl class="rdoc-list label-list"><dt>consumer_key, consumer_secret, request_token.token, request_token.secret, access_token.token, access_token.secret
+<dd>
+<p><a href="DropboxSession.html#method-i-access_token">#access_token</a> is
+only included if it already exists in the DropboxSesssion</p>
+</dd></dl>
+          
+
+          
+          <div class="method-source-code" id="serialize-source">
+            <pre><span class="ruby-comment"># File build/dropbox-ruby-sdk-1.5.1/lib/dropbox_sdk.rb, line 219</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">serialize</span>
+    <span class="ruby-identifier">toreturn</span> = []
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@access_token</span>
+        <span class="ruby-identifier">toreturn</span>.<span class="ruby-identifier">push</span> <span class="ruby-ivar">@access_token</span>.<span class="ruby-identifier">secret</span>, <span class="ruby-ivar">@access_token</span>.<span class="ruby-identifier">key</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">get_request_token</span>
+
+    <span class="ruby-identifier">toreturn</span>.<span class="ruby-identifier">push</span> <span class="ruby-ivar">@request_token</span>.<span class="ruby-identifier">secret</span>, <span class="ruby-ivar">@request_token</span>.<span class="ruby-identifier">key</span>
+    <span class="ruby-identifier">toreturn</span>.<span class="ruby-identifier">push</span> <span class="ruby-ivar">@consumer_secret</span>, <span class="ruby-ivar">@consumer_key</span>
+
+    <span class="ruby-identifier">toreturn</span>.<span class="ruby-identifier">to_yaml</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- serialize-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- serialize-method -->
+
+    
+      <div id="method-i-set_access_token" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">set_access_token</span><span
+            class="method-args">(key, secret)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Given a saved access token and secret, you set this Session to use that
+token and secret</p>
+<ul><li>
+<p>token - this is the access token</p>
+</li><li>
+<p>secret - this is the access token secret</p>
+</li></ul>
+          
+
+          
+          <div class="method-source-code" id="set_access_token-source">
+            <pre><span class="ruby-comment"># File build/dropbox-ruby-sdk-1.5.1/lib/dropbox_sdk.rb, line 185</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">set_access_token</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">secret</span>)
+    <span class="ruby-ivar">@access_token</span> = <span class="ruby-constant">OAuthToken</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">secret</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- set_access_token-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- set_access_token-method -->
+
+    
+      <div id="method-i-set_request_token" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">set_request_token</span><span
+            class="method-args">(key, secret)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Given a saved request token and secret, set this location’s token and
+secret</p>
+<ul><li>
+<p>token - this is the request token</p>
+</li><li>
+<p>secret - this is the request token secret</p>
+</li></ul>
+          
+
+          
+          <div class="method-source-code" id="set_request_token-source">
+            <pre><span class="ruby-comment"># File build/dropbox-ruby-sdk-1.5.1/lib/dropbox_sdk.rb, line 178</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">set_request_token</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">secret</span>)
+    <span class="ruby-ivar">@request_token</span> = <span class="ruby-constant">OAuthToken</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">secret</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- set_request_token-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- set_request_token-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

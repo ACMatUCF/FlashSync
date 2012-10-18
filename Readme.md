@@ -6,18 +6,63 @@ The purpose of this project is to teach students how to use the APIs for differe
 
 ## Possible services
 
+Logo: lightening bolt enclosed with sync symbol 
+
 * Dropbox
+
+Dropbox Python API Documentation: https://www.dropbox.com/static/developers/dropbox-python-sdk-1.5.1-docs/index.html
+Dropbox Ruby API Documentation: https://www.dropbox.com/static/developers/dropbox-ruby-sdk-1.5.1-docs/DropboxClient.html
+
 * Google Drive
 * Microsoft SkyDrive
 
-## Setup
+We may consider using the Ruby Guard Gem to determine if any files on the flashdrive were updated. 
+https://github.com/guard/guard
+
+## Dropbox Setup
 
 First we'll cover downloading and installing the Dropbox SDK. 
 
-We'll use the Python SDK. 
+We'll go through both installing the Python and Ruby SDK. 
 
-- Need to download the Python SDK
+Download the appropriate SDK here: https://www.dropbox.com/developers/reference/sdk
+Extract the SDK to your work enviornment (any directory)
+
+Python:
+
 - Need to run installer script (may need to sudo)
+	sudo python setup.py install
+
+Ruby:
+
+- On OSX we'll want to install RVM which will allow us to run Ruby 1.9+ versus 1.8 which is installed by default
+
+To install RVM:
+\curl -L https://get.rvm.io | bash -s stable --ruby
+
+either close your terminal or run 
+source /Users/Jeff/.rvm/scripts/rvm
+
+rvm install 1.9.2
+
+if you are running OSX 10.8+ or have Xcode 4.2+ installed, you'll need to download gcc as Xcode now uses llvm-gcc and gcc just links to it. RVM is not compatible with llvm-gcc. 
+
+To install GCC you must first install Homebrew
+
+ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"
+
+Once Homebrew is installed 
+
+			brew update
+      brew tap homebrew/dupes
+      brew install autoconf automake apple-gcc42
+      rvm pkg install openssl
+
+- Need to install the Dropbox gem (may need to sudo)
+	sudo gem install dropbox-sdk
+	sudo gem install json
+	sudo gem install oauth
+
 
 ## Authentication
 
